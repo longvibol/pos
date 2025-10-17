@@ -1,0 +1,110 @@
+<template>
+  <q-layout view="hHh LpR fFf">
+    <!-- Header -->
+    <q-header elevated class="bg-primary text-white">
+      <q-toolbar>
+        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+        <q-toolbar-title>
+          <div>Home Shop</div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-header>
+
+    <!-- Drawer -->
+    <q-drawer
+      v-model="leftDrawerOpen"
+      show-if-above
+      :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
+      style="
+        top: 0px !important;
+        bottom: 0px !important;
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+      "
+    >
+      <q-scroll-area class="fit">
+        <q-list>
+          <q-item clickable v-ripple exact to="/">
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section> Home </q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/user">
+            <q-item-section avatar>
+              <q-icon name="person" />
+            </q-item-section>
+            <q-item-section> User </q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/customer">
+            <q-item-section avatar>
+              <q-icon name="groups" />
+            </q-item-section>
+            <q-item-section> Customer </q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/category">
+            <q-item-section avatar>
+              <q-icon name="backup_table" />
+            </q-item-section>
+            <q-item-section> Category </q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/item">
+            <q-item-section avatar>
+              <q-icon name="backup_table" />
+            </q-item-section>
+            <q-item-section> Item </q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/supplier">
+            <q-item-section avatar>
+              <q-icon name="maps_home_work" />
+            </q-item-section>
+            <q-item-section> Supplier </q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/purchase">
+            <q-item-section avatar>
+              <q-icon name="inventory" />
+            </q-item-section>
+            <q-item-section> Purchase </q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/sale">
+            <q-item-section avatar>
+              <q-icon name="chrome_reader_mode" />
+            </q-item-section>
+            <q-item-section> Sale </q-item-section>
+          </q-item>
+        </q-list>
+      </q-scroll-area>
+    </q-drawer>
+
+    <!-- Page Content -->
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+
+    <!-- Footer -->
+    <q-footer elevated class="bg-grey-8 text-white">
+      <q-toolbar>
+        <q-toolbar-title>
+          <div>Home Shop</div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
+  </q-layout>
+</template>
+
+<script>
+import { ref } from "vue";
+
+export default {
+  setup() {
+    const leftDrawerOpen = ref(false);
+
+    return {
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+};
+</script>
