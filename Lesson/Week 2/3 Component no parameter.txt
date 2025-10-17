@@ -1,0 +1,74 @@
+Component : is the html tag Element that we can use many time, it is like the function 
+
+1- Component without Parameter 
+
+1.1 - Go to components >> create MyButton.vue 
+
+<template>
+  <div>
+    <button class="btn">Enter Button Component</button>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+.btn{
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+<style>
+
+</style>
+
+
+1.2 Go to App.vue 
+
+- first import the component : inside the script 
+- call the in html : <my-button-vue/><br> or  <MyButtonVue/>
+
+-------------------------------------------
+<template>
+  <div>
+    <h5>this is a root</h5>
+    <my-button-vue/><br>
+    <MyButtonVue/>
+  </div>
+</template>
+
+<script>
+import MyButtonVue from './components/MyButton.vue'
+
+export default {
+  components:{
+    MyButtonVue
+  }
+
+}
+</script>
+
+<style>
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

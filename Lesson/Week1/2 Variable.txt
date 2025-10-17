@@ -1,0 +1,208 @@
+1. display variable on screen
+
+<template>
+  <div>
+    <h1>
+      {{message}} {{name}}
+    </h1>
+  </div>
+</template>
+
+
+<script>
+export default {
+  data(){
+    return{
+      message:"Hello",
+      name:"Jame"
+    }
+  }
+}
+</script>
+
+
+2. V- Model : Form (two way binding) បញ្ចូលតម្លៃពី Form ទៅកាន់អាញាត់
+
+<template>
+  <div>
+    <input type="text" v-model="message"><br>
+    Active <input type="radio" v-model="active" value="true">
+    <h1>
+      {{message}} {{name}}
+    </h1>
+    <h4>active:{{active}}</h4>
+  </div>
+</template>
+
+
+<script>
+export default {
+  data(){
+    return{
+      message:"Hello",
+      name:"Jame",
+      active:false
+    }
+  }
+}
+</script>
+
+------------------------------------------
+
+3- V-bind : ដើម្បីប្រើប្រាស់តម្លៃរបស់ Variable 
+
+  V-bind<input type="text" v-bind:value="message"><br>
+    V-model<input type="text" v-model="message"><br>
+
+- v-model : hello 
+==> v-bind : hello, how are you 
+
+We can add how are you to the v-bind and can use the variable from v-model variable : hello. 
+
+when v-model change variable the v-bind will change too!
+
+
+-----------------
+
+<template>
+  <div>
+    V-bind<input type="text" v-bind:value="message"><br>
+    V-model<input type="text" v-model="message"><br>
+    active <input type="radio" v-model="active" value="true">
+    <h1>
+      {{message}} {{name}}
+    </h1>
+    <h4>active:{{active}}</h4>
+  </div>
+</template>
+
+
+<script>
+export default {
+  data(){
+    return{
+      message:"Hello",
+      name:"Jame",
+      active:false
+    }
+  }
+}
+</script>
+
+---------------
+
+
+4- V-show : បង្ហាញ Variable 
+
+
+<template>
+  <div>
+    <h5>This is H5</h5>
+    <h5 v-show="true">
+      {{message}}
+    </h5>
+
+  </div>
+</template>
+
+<script>
+export default {
+  data(){
+    return{
+      message: "Hello mama"
+    }
+  }
+
+}
+</script>
+
+<style>
+
+</style>
+
+
+---------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

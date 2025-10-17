@@ -1,0 +1,169 @@
+We have app.vue and MyButton.vue 
+
+Want to transfer the value from app.vue to MyButton.vue 
+
+- In app.vue 
+
+<my-button-vue title="submit"/><br>
+
+==> title is the parameter and "submit" is the value that we want to transfer 
+
+code: 
+--------------------
+<template>
+  <div>
+    <h5>this is a root</h5>
+    <my-button-vue title="submit"/><br>
+    <MyButtonVue/>
+  </div>
+</template>
+
+<script>
+import MyButtonVue from './components/MyButton.vue'
+
+export default {
+  components:{
+    MyButtonVue
+  }
+
+}
+</script>
+
+<style>
+
+</style>
+--------------------------
+
+- in MyButton.vue 
+
+ដើម្បីទទួលតម្លៃដែលបានបោះមកនឹងយើងត្រូវចាប់វានៅក្នុង export default {}
+
+export default {
+props:{
+    title:{
+        type:String,
+        default:null,
+    }
+}
+}
+
+-----------------------
+
+<template>
+  <div>
+    <button class="btn">{{title}}</button>
+  </div>
+</template>
+
+<script>
+export default {
+props:{
+    title:{
+        type:String,
+        default:null,
+    }
+}
+}
+</script>
+.btn{
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+<style>
+
+</style>
+
+
+-----------------------------------------
+
+We see that in the props: the title default value is null and it have tyle String
+
+- in app.vue :
+
+<MyButtonVue title="On Click"/>
+
+if we create out own paparment so it will show on click in the button 
+
+
+** replace the value with parameter ** 
+
+
+in app.vue :
+
+data(){
+    return{
+      title:"On Submit",
+    }
+  },
+
+==> we bind the variable 
+
+<my-button-vue :title="title"/><br>
+
+explain :
+
+:title="title" (:title is our binding variable and "title" is the variable that we want to transfer) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

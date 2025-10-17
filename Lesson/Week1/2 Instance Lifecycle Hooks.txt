@@ -1,0 +1,131 @@
+There are 8 of Instance Lifecycle Hooks:
+
+1. beforeCreate
+2. created 
+3. beforeMount 
+4. Mounted 
+5. BeforeUpdate
+6. Updated
+7. BeforeDestroy 
+8. Destroyed 
+
+Ex:
+
+<template>
+  
+</template>
+
+<script>
+export default {
+
+mounted(){
+  console.log("Mounted");
+},
+beforeMount(){
+  console.log("Before Mounted");
+},
+created(){
+  console.log("Created");
+},
+beforeCreate(){
+  console.log("Before Created");
+},
+updated(){
+  console.log("Update");
+},
+beforeUpdate(){
+  console.log("Before Update");
+},
+destroyed(){
+  console.log("Destroyed");
+},
+beforeDestroy(){
+  console.log("Before Destroyed");
+}
+
+}
+</script>
+
+<style>
+
+</style>
+
+==> Running  4 LifeCycle Hooks 
+
+Before Created
+Created
+Before Mounted
+Mounted
+
+What does not run : 
+
+Before Update
+Update
+Before Destroyed
+Destroyed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

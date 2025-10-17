@@ -1,0 +1,67 @@
+Handling : ការគ្រប់គ្រង់ User input តាមរយៈ Directive ដើម្បីភ្ជាប់ Event listener សម្រាប់ហៅ Method in the Vue 
+
+-Directive គឺជា event ដែលយើងប្រើប្រាស់នៅក្នុង Brower : Click, Enter 
+
+-Attribute គឺជា Parameter របស់ Directive 
+
+
+Ex:
+
+<template>
+  <div>
+    <button v-on:click="handleSubmit">Submit</button>
+  </div>
+</template>
+
+<script>
+export default {
+
+methods:{
+  handleSubmit(){
+    alert('Submited!')
+  }
+}
+}
+</script>
+
+<style>
+
+</style>
+
+===============
+
+Explain : 
+
+<button v-on:click="handleSubmit">Submit</button>
+
+- v-on : is the directive 
+- click : is the attribute of directive v-on or parament of directive 
+- handleSubmit : is the event 
+
+- methods:{
+  handleSubmit(){
+    alert('Submited!')
+  }
+}
+==> is the method or function 
+
+when we click ==> it will called the method :  handleSubmit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

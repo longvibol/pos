@@ -1,0 +1,39 @@
+1 Looping 
+
+<template>
+  <div>
+    <div v-for="(item,index) in users" :key="index">
+      {{item.name}} | {{item.gener}} | {{item.age}} <br>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data(){
+    return {
+      users:[
+        {
+          name: "បុផ្ផា",
+          gender: "ស្រី",
+          age: 20
+        },
+        {
+          name: "ដាវិន",
+          gender: "ប្រុស",
+          age: 23
+        },
+        {
+          name: "ផារី",
+          gender: "ស្រី",
+          age: 18
+        }
+      ]
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

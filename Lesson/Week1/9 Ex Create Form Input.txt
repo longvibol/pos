@@ -1,0 +1,43 @@
+<template>
+<div>
+  ឈ្មោះ <input type="text" v-model="name"><br>
+  លេខទូរស័ព្ទ <input type="text" v-model="phone"><br>
+  អ៊ីម៉ែល <input type="text" v-model="email"><br>
+  <button @click="handleFormSubmit">Submit</button>
+
+</div>
+  
+</template>
+
+<script>
+export default {
+
+ 
+  data(){
+
+    return {
+      name:null,
+      phone:null,
+      email:null,
+    }     
+  },
+  methods:{
+
+    handleFormSubmit(){
+
+      // alert('name: '+this.name + " phone :"+ this.phone + " email: "+this.email);
+      alert(`
+        ឈ្មោះ `+this.name+`
+        លេខទូរស័ព្ទ `+this.phone+`,
+        អ៊ីម៉ែល `+this.email+`
+      `)
+    }
+
+  }
+
+}
+</script>
+
+<style>
+
+</style>

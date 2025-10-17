@@ -1,0 +1,17 @@
+POS Start Up
+
+1. Install node 
+2. Install meteor 
+
+>> npm install -g meteor
+
+3. in stall vue 
+
+4. Create project : 
+
+>> meteor create app --vue 
+
+5. Run 
+
+>> meteor 
+

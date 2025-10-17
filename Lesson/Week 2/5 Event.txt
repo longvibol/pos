@@ -1,0 +1,158 @@
+ការផ្តល់តម្លៃត្រលប់តាមរយៈ Event 
+
+we want to create our own custom event :
+
+Ex: App.vue is the main view 
+
+we create put the button component inside this App.vue 
+
+<template>
+  <div>
+    <h5>this is a root</h5>
+      <MyButtonVue :title="titleT" @MyClick="handleSubmit"/>
+  </div>
+</template>
+
+methods:{
+    handleSubmit(){
+      alert("Submitted My custom event")
+    }
+  },
+
+យើងមើលទៅ <MyButtonVue :title="titeT" @MyClick="handleSubmit"/>​​ វាជា component របស់យើងដែលយើងបានបង្កើតនៅខាងក្រៅ ហើយយើងយក​មក ប្រើក្នុង App.vue 
+
+ចឹងបើយើង ចង់អោយ component នឹងមាន event ណាមួយកើតឡើងយើងត្រូវទៅបង្កើតនៅទីតាំង component នឹងផ្ទាល់ 
+
+in component : MyButtonVue.vue 
+
+<template>
+  <div>
+    <button class="btn" @click="handleClick">{{title}}</button>
+  </div>
+</template>
+
++ this is our template to create button. 
+
+យើងចង់អោយពេលគេចុងលើ button នឹងវាហៅ function handleClick មកប្រើ 
+
+so we create function in the methods 
+
+methods:{
+    handleClick(){
+        this.$emit('MyClick')
+    }
+},
+
+==> this.$emit('MyClick') we called the function from App.vue ; 'MyClick' is the function in App.vue 
+
+
+----------------------
+App.vue
+
+<template>
+  <div>
+    <h5>this is a root</h5>
+    <my-button-vue :title="titleT" @click="handelAppClick"/><br>
+    <MyButtonVue :title="titleT" @MyClick="handleSubmit"/>
+  </div>
+</template>
+
+<script>
+import MyButtonVue from './components/MyButton.vue'
+
+export default {
+
+  data(){
+    return{
+      titleT:"On Submit",
+    }
+  },
+
+  methods:{
+    handleSubmit(){
+      alert("Submitted My custom event")
+    },
+    handelAppClick(){
+      alert("App Clicked from App.vue")
+    }
+  },
+  components:{
+    MyButtonVue
+  },
+
+}
+</script>
+
+<style>
+
+</style>
+
+
+--------------------------------- in component 
+<template>
+  <div>
+    <button class="btn" @click="handleClick">{{title}}</button>
+  </div>
+</template>
+
+<script>
+export default {
+methods:{
+    handleClick(){
+        this.$emit('MyClick')
+    }
+},
+  mounted(){
+    this.$el.addEventListener('click',this.handleClick)
+  },
+
+props:{
+    title:{
+        type:String,
+        default:null,
+    }
+}
+}
+</script>
+.btn{
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+<style>
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

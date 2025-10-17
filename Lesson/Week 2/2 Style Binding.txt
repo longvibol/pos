@@ -1,0 +1,36 @@
+video : 26
+
+Style Binding : ដាក់ style inline to the template 
+
+Ex: 
+
+<template>
+  <div>
+    <h1 style="font-size:50px;color:blue">This is a normal style</h1>
+    <h1 :style="{fontSize:'80px',color:'red'}">This is a binding style</h1>
+  </div>
+</template>
+
+* Option to improve the code with the variable 
+
+Ex: 
+
+<template>
+  <div>
+    <h1 style="font-size:50px;color:blue">This is a normal style</h1>
+    <h1 :style="{fontSize:size,color:color}">This is a binding style</h1>
+  </div>
+</template>
+
+
+  data() {
+    return {
+     size: '100px',
+     color: 'red'
+    };
+  },
+
+
+Note to make the style binding ( :style="{fontSize:'80px',color:'red'}" )
+
+

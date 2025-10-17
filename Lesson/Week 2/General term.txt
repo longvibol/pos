@@ -1,0 +1,87 @@
+1. object: In JavaScript, an object is a collection of key-value pairs:
+
+Ex:
+
+const person = {
+  name: 'Long',
+  age: 30
+};
+
+2. Object of functions: Object where the value are functions
+
+Ex: 
+
+const actions = {
+  greet() {
+    console.log('Hello!');
+  },
+  sayBye() {
+    console.log('Goodbye!');
+  }
+};
+
+
+**Importance : data vs methods in JS 
+
+3. data : store values (like numbers, strings, arrays, objects) that your component uses and reacts to.
+
+type: function that return and object!
+
+Ex: 
+
+data() {
+  return {
+    wrongMethod: function() {
+      console.log('Oops');
+    }
+  };
+}
+
+4. methods : កន្លែងដែលបង្កើត function ដើម្បីធ្វើអីមួយ click, alter etc... 
+
+Defines functions that do things—like handle clicks, update data, or run logic.
+
+
+Ex: 
+
+methods: {
+  increment() {
+    this.count++;
+  },
+  greet() {
+    console.log(`Hello, ${this.username}`);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

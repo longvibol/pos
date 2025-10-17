@@ -1,0 +1,40 @@
+Watcher property: វាជាអ្នកមើលលើ data ពេលណាដែលវាប្រែប្រួល​។ ពេលដែលវា ប្រែប្រួល វា នឹងបង្កើត តម្លៃថ្មីអោយ Variable នឹងតែម្តង់
+
+<template>
+  firstName <input type="text" v-model="firstName"><br>
+  lastName <input type="text" v-model="lastName"><br>
+  Full Name: {{fullName}}
+</template>
+
+<script>
+export default {
+  data(){
+    return{
+      firstName:null,
+      lastName:null,
+      fullName:null,
+    }
+  },
+
+  watch:{
+    firstName:function(val){
+      console.log("value firstname: ", val);
+      this.fullName = val + " " + this.lastName
+    },
+    lastName:function(val){
+      console.log("value lastname: " +val);
+      this.fullName=this.firstName+ " " + val;
+    }
+  }
+  // computed:{
+  //   fullName(){
+  //     return this.firstName+ " " + this.lastName
+  //   }
+  // }
+
+}
+</script>
+
+<style>
+
+</style>

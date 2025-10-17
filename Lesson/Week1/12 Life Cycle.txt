@@ -1,0 +1,93 @@
+<template>
+<div>
+  <button @click="handleUpdate">Update Name</button>
+  {{name}}
+  <my-component-vue v-if="active"/>
+</div>
+  
+</template>
+
+<script>
+import MyComponentVue from './components/MyComponent.vue';
+
+export default {
+  components:{
+    MyComponentVue
+  },
+
+data(){
+  return{
+    name:"Jame",
+    active:true
+  }
+},
+
+methods:{
+handleUpdate(){
+  this.name="Nary";
+  this.active=false
+}
+},
+
+mounted(){
+  console.log("Mounted");
+},
+beforeMount(){
+  console.log("Before Mounted");
+},
+created(){
+  console.log("Created");
+},
+beforeCreate(){
+  console.log("Before Created");
+},
+updated(){
+  console.log("Update");
+},
+beforeUpdate(){
+  console.log("Before Update");
+},
+destroyed(){
+  console.log("Destroyed");
+},
+beforeDestroy(){
+  console.log("Before Destroyed");
+}
+
+}
+</script>
+
+<style>
+
+</style>
+
+
+
+--------------------- in MyComponent
+
+
+<template>
+  <div>
+    <h4>this is Component</h4>
+  </div>
+</template>
+
+<script>
+export default {
+
+    beforeDestroy(){
+        console.log("Before Destroyed is Component");
+    },
+    destroyed(){
+        console.log("Destroyed is Component");
+    }
+
+}
+</script>
+
+<style>
+
+</style>
+
+
+

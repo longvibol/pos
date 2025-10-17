@@ -1,0 +1,72 @@
+1. display value to the field 
+
+<template>
+  <div>
+    ​ឈ្មោះ <input type="text" value="ដារា"><br>
+    ភេទ <input type="text" v-model="gender"><br>
+    អាយុ <input type="text" v-model="age"><br>
+    លេខទូរស័ព្ទ <input type="text" v-model="phnom"><br>
+    </div>
+</template>
+
+<script>
+export default {
+  data(){
+    return{
+      name: "ដានិច",
+      gender: "ស្រី",
+      age: "២០",
+      phnom: "017234433",
+    }
+  }
+
+}
+</script>
+
+<style>
+
+</style>
+
+2. Crate Variable to disply with v-bind 
+
+<template>
+  <div>
+    ​ឈ្មោះ <input type="text" v-bind:value="name"><br>
+    ភេទ <input type="text" v-bind:value="gender"><br>
+    អាយុ <input type="text" v-bind:value="age"><br>
+    លេខទូរស័ព្ទ <input type="text" v-bind:value="phnom"><br>
+    </div>
+</template>
+
+<script>
+export default {
+  data(){
+    return{
+      name: "ដានិច",
+      gender: "ស្រី",
+      age: "២០",
+      phnom: "017234433",
+    }
+  }
+
+}
+</script>
+
+<style>
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

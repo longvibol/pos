@@ -1,0 +1,46 @@
+<template>
+  <div>
+
+    ភេទប្រុស <input type="radio" v-model="gender" value="ប្រុស"><br>
+    ភេទស្រី​ <input type="radio" v-model="gender" value="ស្រី"><br>
+
+    <div v-for="(item,index) in users" :key="index">
+      <div v-if="gender == item.gender">
+        {{item.name}} | {{item.gener}} | {{item.age}} <br>
+      </div>
+      
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data(){
+    return {
+
+      gender:"ស្រី",
+      users:[
+        {
+          name: "បុផ្ផា",
+          gender: "ស្រី",
+          age: 20
+        },
+        {
+          name: "ដាវិន",
+          gender: "ប្រុស",
+          age: 23
+        },
+        {
+          name: "ផារី",
+          gender: "ស្រី",
+          age: 18
+        }
+      ]
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

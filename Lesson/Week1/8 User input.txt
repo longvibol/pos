@@ -1,0 +1,89 @@
+1. input from Form :
+
+<template>
+  <div>
+    Username: <input type="text" v-model="username" v-on:keydown.enter="handleEnter">
+  </div>
+</template>
+
+<script>
+export default {
+
+data(){
+  return {
+    username:null,
+  }
+},
+
+methods:{
+  handleEnter(){
+    alert('username: '+this.username)
+  }
+}
+}
+</script>
+
+<style>
+
+</style>
+
+When they write and enter the name then Enter : it will alert the name : username :  …
+
+
+-------------------------------------------------------------------------------------
+
+2. shorthand with v-on and v-bind 
+
+v-on : shorthand 
+
+<div>
+    Username: <input type="text" v-model="username" v-on:keydown.enter="handleEnter">
+  </div>
+
+==> 
+
+<div>
+    Username: <input type="text" v-model="username" @:keydown.enter="handleEnter">
+  </div>
+
+------
+
+v-bind : shorthand 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

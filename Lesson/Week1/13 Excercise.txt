@@ -1,0 +1,3 @@
+create form input name, price, qty, and amout
+
+video 23

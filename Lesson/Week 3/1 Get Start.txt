@@ -1,0 +1,38 @@
+1- Create project with Meteor :
+
+>> meteor create masterit-shop --vue 
+
+
+2. In imports >> api is where we working with database 
+
+3. In Ui 
+
+- component : where we create component 
+- App.vue : is the root app
+- plugins.js : where we import the plugin 
+
+4. In stall Quasar : the style framework that they build for us just import the class or libary 
+
+>>npm i quasar@1.15.21 --save
+
+>> npm i @quasar/extras --save
+
+
+5. Add 
+
+import Quasar from "quasar";
+Vue.use(Quasar);
+import "../../public/material-icons.css";
+import "quasar/dist/quasar.min.css";
+
+
+
+
+
+
+
+
+
+
+
+

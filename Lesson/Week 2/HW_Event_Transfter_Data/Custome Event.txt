@@ -1,0 +1,382 @@
+1. we want to create our own custom event to handle the submit variable : transfer from child to parent then from parent to child :
+
+* Parent : App.vue 
+
+* Children : Input Form Sign Up and MyTable 
+
+In Component SignUP: Want then they click on SignUp it show My Table in App.vue 
+
+Step by Step to do it : 
+
+1. In SignUp Component : 
+
+<button @click="handleSignUp">Sign Up</button>
+
+==> Create function event when they @click on the button it called the "handleSignUp"
+
+-- We create data with our variable that we want to transfer to Parent : App.vue 
+
+data() {
+    return {
+      username: null,
+      password: null,
+      gender: null,
+      habits: [],
+    };
+  },
+
+
+methods: {
+    handleSignUp() {
+      let doc = {
+        username: this.username,
+        password: this.password,
+        gender: this.gender,
+        habits: this.habits,
+      };
+      this.$emit("submit", doc);
+    },
+  },
+
+Explain : this.$emit("submit", doc);
+
+* មានន័យថា យើងបោះតម្លៃ ទៅអោយ Event របស់យើងបង្កើត submit with the object : doc 
+
+ចឹងយើងត្រូវរកមើលអ្នកចាំទទួល នៅក្នុង App.vue 
+
+1 Step : 
+App.vue ចាំទទួល Data and trigger from SignUp 
+
+
+2. In App.vue is the parent 
+
+<template>
+  <div>
+    <h1>This is from SignUp</h1>
+    <ComponentSignUp @submit="handleSignUp" />
+    
+  </div>
+</template>
+
+Explain :  <ComponentSignUp @submit="handleSignUp" />
+
+@submit is the event that get from SignUp component; and "handleSignUp" is the function that we want do to what 
+
+
+==>
+
+methods: {
+    handleSignUp(doc) {
+      this.users.push(doc);
+      // console.log('user:', this.users);
+    },
+  },
+
+ចឹង យើងចឹងអោយវារក្សាទិន្នន័យ object ដែលបោះមកនឹងនៅក្នុង object Users 
+
+ data() {
+    return {
+      users: [],
+    };
+  },
+
+==> data is the type of the object that we want to store: we want to store in Arrays 
+
+យើងចឹងបោះបង្ហាញទិន្នន័យរបស់ object users នឹងទៅក្នុង component កូនមួយដែល in MyTableShow 
+
+ចឹងយើងត្រូវ bind ភ្ជាប់ទិន្នន័យ វាអោយ component MyTable 
+
+<MyTableVue :usersList="users" />
+
+** Explain : 
+
+-usersList is the property binding to the child component 
+-users it the data in Parent 
+
+In order to get data in Child Component we use property binding : by writing props :
+
+export default {
+  props: {
+    usersList: {
+      default: null,
+      type: Array,
+    },
+  },
+};
+
+
+==> we need to give the type and default value. 
+
+================================================================================================
+
+
+1-In App.vue 
+
+<template>
+  <div>
+    <h1>This is from SignUp</h1>
+    <ComponentSignUp @submit="handleSignUp" />
+    <MyTableVue :usersList="users" />
+    
+  </div>
+</template>
+
+<script>
+import ComponentSignUp from "./components/ComponentSignUp.vue";
+import MyTableVue from './components/MyTable.vue';
+
+export default {
+  components: {
+    ComponentSignUp,
+    MyTableVue
+  },
+
+  data() {
+    return {
+      users: [],
+    };
+  },
+
+  methods: {
+    handleSignUp(doc) {
+      this.users.push(doc);
+      // console.log('user:', this.users);
+    },
+  },
+};
+</script>
+
+<style></style>
+
+
+
+-----------------------------------------------------------------------
+
+2. In SignUp : Child component ( Input Data )
+
+<template>
+  <div class="my-table">
+
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        v-model="username"
+        @input="username = username.toUpperCase()"
+        placeholder="Enter your username"
+      /><br /><br />
+      <label for="password">Password:</label>
+      <input
+        type="text"
+        id="password"
+        v-model="password"
+        placeholder="Enter your password"
+      /><br /><br />
+
+      <label>Gender:</label>
+      <input
+        type="radio"
+        id="male"
+        :value="'Male'"
+        v-model="gender"
+        name="gender"
+      />
+      <label for="male">Male</label>
+
+      <input
+        type="radio"
+        id="female"
+        :value="'Female'"
+        v-model="gender"
+        name="gender"
+      />
+      <label for="female">Female</label>
+
+      <br /><br />
+
+      <label>Habits:</label>
+
+      <input type="checkbox" id="hiking" value="Hiking" v-model="habits" />
+      <label for="hiking">Hiking</label>
+
+      <input type="checkbox" id="football" value="Football" v-model="habits" />
+      <label for="football">Football</label>
+
+      <input type="checkbox" id="reading" value="Reading" v-model="habits" />
+      <label for="reading">Reading</label>
+
+      <input type="checkbox" id="eating" value="Eating" v-model="habits" />
+      <label for="eating">Eating</label>
+
+      <input type="checkbox" id="hangout" value="Hangout" v-model="habits" />
+      <label for="hangout">Hangout</label><br /><br />
+
+      <div class="button-group">
+        <button @click="handleSignUp">Sign Up</button>
+      </div>
+
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      username: null,
+      password: null,
+      gender: null,
+      habits: [],
+    };
+  },
+
+  methods: {
+    handleSignUp() {
+      let doc = {
+        username: this.username,
+        password: this.password,
+        gender: this.gender,
+        habits: this.habits,
+      };
+      this.$emit("submit", doc);
+    },
+  },
+};
+</script>
+
+<style></style>
+
+
+----------------------------------------------------------
+
+
+3. In MyTable child component ; (show the data)- data to be use 
+
+<template>
+  <div class="my-table-show">
+    <div>
+      <h2>Users List:</h2>
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Gender</th>
+            <th>Habits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(user, index) in usersList" :key="index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.habits.join(", ") }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    usersList: {
+      default: null,
+      type: Array,
+    },
+  },
+};
+</script>
+
+<style></style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

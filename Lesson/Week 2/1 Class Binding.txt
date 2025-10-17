@@ -1,0 +1,116 @@
+Video 24 : class Binding 
+
+
+1. Class Binding គឺជាការ Binding class ទៅតាមតម្លៃដែលគេផ្តល់អោយ 
+ចឹងបើយើងចង់អោយ class មួយដំណើរការ ឬមិនដំណើរការ យើងអាចប្រើ class binding បាន ដែលវាមានតម្លៃតែ ពីរទេ : True and False 
+
+Ex: 
+
+<template>
+<div>
+  <h1 class="static-class">This is a static class</h1>
+  <h1 class="binding-class">This is a binding class</h1>
+</div>
+  
+</template>
+
+<script>
+export default {
+
+}
+</script>
+.static-class{
+  color: rebeccapurple;
+  font-style: italic;
+  font-size: 60px;
+}
+
+.binding-class{
+  color: rgb(33, 0, 244);
+  font-size: 60px;
+}
+
+<style>
+
+</style>
+
+
+This is normal class with normal style: what we want when they click on the button it change the style 
+==> we need class binding 
+
+<h1 class="binding-class">This is a binding class</h1> ==> change to class binding 
+
+<h1 :class="{'binding-class':true}">This is a binding class</h1>
+
+Note: :class="{'binding-class':true}"
+
+therefore, if we want to control the this style we can click on it
+
+
+========================== code ============
+
+<template>
+  <div>
+    <h1 :class="{ 'static-class': !active }">This is a static class</h1>
+    <h1 :class="{ 'binding-class': active }">This is a binding class</h1>
+    <button @click="changeColors">Change Colors</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      active: false,
+    };
+  },
+
+  methods: {
+    changeColors() {
+      this.active = !this.active;
+    },
+  },
+};
+</script>
+
+<style>
+.static-class {
+  color: rebeccapurple;
+  font-style: italic;
+  font-size: 60px;
+}
+
+.binding-class {
+  color: rgb(33, 0, 244);
+  font-size: 60px;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

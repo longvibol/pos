@@ -1,0 +1,58 @@
++ Computed property: is the object in Vue instance that check the state of the DOM 
+
+ពេលដែលវាមានអីមួយប្រែប្រួល វានឹងធ្វើការ Update ឡើងវិញ
+
+<template>
+  firstName <input type="text" v-model="firstName"><br>
+  lastName <input type="text" v-model="lastName"><br>
+  Full Name: {{fullName}}
+</template>
+
+<script>
+export default {
+  data(){
+    return{
+      firstName:null,
+      lastName:null,
+    }
+  },
+  computed:{
+    fullName(){
+      return this.firstName+ " " + this.lastName
+    }
+  }
+
+}
+</script>
+
+<style>
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

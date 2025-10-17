@@ -1,0 +1,277 @@
+// app.vue ///
+
+
+<template>
+
+<div>
+<form @submit.prevent="handleCompute" class="form-container">
+    <div class="form-group">
+      <label>Item</label>
+      <input type="text" v-model="name" @input="name = name.toUpperCase()" />
+    </div>
+
+    <div class="form-group">
+      <label>Price</label>
+      <input type="text" v-model.number="price" />
+    </div>
+
+    <div class="form-group">
+      <label>Quantity</label>
+      <input type="text" v-model.number="qty" />
+    </div>
+
+    <div class="form-group">
+      <label>Amount:</label>
+      <div class="amount-display">{{ amount }}</div>
+    </div>
+
+    <div class="button-wrapper">
+  <button type="submit">Submit</button>
+
+
+<div v-if="items.length" class="submitted-section">
+  <h3>Submitted Items:</h3>
+  <ul>
+    <li v-for="(item, index) in items" :key="index">
+      {{ item.name }} — {{ item.qty }} × {{ item.price }} = {{ item.amount }} $
+    </li>
+  </ul>
+</div>
+
+
+</div>
+
+  </form>
+
+
+</div>
+ 
+</template>
+
+
+<script>
+export default {
+
+data(){
+  return{
+    name:null,
+    price:0,
+    qty:0,
+    items:[] // Array to store submitted items
+  }
+},
+computed:{
+  amount(){
+    return this.price * this.qty +" $";
+  }
+},
+ methods:{
+  handleCompute(){
+    // save item to array
+    this.items.push({
+      name: this.name,
+      price: this.price,
+      qty: this.qty,
+      amount: this.price * this.qty
+
+    });
+
+    // Show alert
+    // alert("Item: " + this.name + "\nTotal price: " + this.amount);
+
+    // Reset form fields
+      this.name = '';
+      this.price = 0;
+      this.qty = 0;
+  }
+ }
+
+}
+</script>
+
+<style>
+
+</style>
+
+===============================================
+
+
+// main.css
+
+@import "tailwindcss";
+
+/* Full-page layout */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #e0f2fe, #f0fdf4); /* Soft gradient */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form container */
+.form-container {
+  max-width: 800px;
+  width: 100%;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+}
+
+/* Form group layout */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1f2937; /* Tailwind's gray-800 */
+  font-size: 16px;
+}
+
+/* Input fields */
+input {
+  border: 1px solid #d1d5db;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 18px;
+  box-sizing: border-box;
+  width: 100%;
+  transition: all 0.3s ease;
+  outline: none;
+  background-color: #f9fafb;
+}
+
+input:hover {
+  border-color: #9ca3af;
+}
+
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+  background-color: #fff;
+}
+
+/* Amount display */
+.amount-display {
+  font-size: 18px;
+  padding: 12px 14px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  color: #111827; /* Tailwind's gray-900 */
+}
+
+/* Submit button */
+button {
+  border: 1px solid #3b82f6;
+  background-color: #3b82f6;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  margin-top: 12px;
+}
+
+button:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+.button-wrapper {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.submitted-section {
+  margin-top: 40px;
+  padding: 24px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.submitted-section h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937; /* Tailwind gray-800 */
+  margin-bottom: 16px;
+}
+
+.submitted-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submitted-section li {
+  font-size: 16px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #374151; /* Tailwind gray-700 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

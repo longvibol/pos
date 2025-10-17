@@ -1,0 +1,24 @@
+Condition: 
+
+<template>
+  <div>
+    សូមបញ្ចូលអាយុរបស់អ្នក <input type="text" v-model="age"><br>
+    អាយុរបស់អ្នកគឺ {{age}} <br>
+    <h6 v-if="age >= 0 && age<12">អ្នកស្ថិតក្នុងវ័យកុមា</h6>
+    <h6 v-else-if="age>=12 && age<18">អ្នកស្ថិតក្នុងវ័យជំទង់</h6>
+    <h6 v-else-if="age>=18 && age<24">អ្នកស្ថិតក្នុងវ័យយុវវ័យ</h6>
+    <h6 v-else>អ្នកស្ថិតក្នុងវ័យចាស់</h6>
+  </div>
+</template>
+
+<script>
+export default {
+  data(){
+    return{
+      age :0,
+    }
+  }
+}
+</script>
+<style>
+</style>
